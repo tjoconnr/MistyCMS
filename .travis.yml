@@ -1,7 +1,10 @@
 language: python
-install: echo "Installing MistyCMS..."
-script: echo "Building MistyCMS..."
-# deploy:
-#   provider: gae
-#   keyfile: client-secret.json
-#   project: timber-cast
+install: true
+script: echo "** MistyCMS **"
+deploy:
+  provider: gae
+  keyfile: misty-cms.json
+  project: misty-cms
+before_install:
+- openssl aes-256-cbc -K $encrypted_65be5f8f619d_key -iv $encrypted_65be5f8f619d_iv
+  -in misty-cms.json.enc -out misty-cms.json -d
