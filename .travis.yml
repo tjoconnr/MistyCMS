@@ -1,6 +1,8 @@
 language: python
-install: true
-script: python --version
+install:
+  .install.sh
+script:
+  python -V
 # deploy:
 #   provider: gae
 #   keyfile: client-secret.json
