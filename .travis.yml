@@ -1,13 +1,3 @@
-# https://github.com/GoogleCloudPlatform/continuous-deployment-demo/blob/master/.travis.yml
-sudo: false
 language: python
 install: true
-
-# deploy:
-#   provider: gae
-#   skip_cleanup: true
-#   keyfile: client-secret.json
-#   project: misty-cms
-#   version: $TRAVIS_BUILD_NUMBER
-#   verbosity: debug
-#   on: master
+script: python --version
