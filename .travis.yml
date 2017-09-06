@@ -1,8 +1,6 @@
 language: python
-install:
-  .install.sh
-script:
-  python -V
+install: /install.sh
+script: python -V
 # deploy:
 #   provider: gae
 #   keyfile: client-secret.json
