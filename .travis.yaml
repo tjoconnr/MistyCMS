@@ -1,0 +1,7 @@
+language: python
+install: true
+script: python --version
+# deploy:
+#   provider: gae
+#   keyfile: client-secret.json
+#   project: timber-cast
