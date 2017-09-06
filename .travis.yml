@@ -11,7 +11,7 @@ env:
 before_install:
 # Install Google App Engine Python SDK
 - if [ ! -d "${GAE_PYTHONPATH}" ]; then
-    python scripts/fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
+    python fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
   fi
 
 # [START auth]
@@ -45,7 +45,7 @@ script:
 
 # [START deploy]
 # Deploy the app
-- gcloud -q preview app deploy app.yaml --promote
+- gcloud -q preview app deploy src/app.yaml --promote
 # Run and end to end test
 #- python e2e_test.py
 # [END deploy]
