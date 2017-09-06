@@ -8,6 +8,85 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-top: 60px;
+  margin-bottom: 60px;
+}
+#editor {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.footer .text-muted {
+  margin: 20px 0;
+  color: #999;
+  font-size: 10px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.jumbotron {
+  position:fixed; height:100%; width:100%; top:0; left: 0;
+  background: black;
+}
+
+.fancy, .navbar {
+  font-weight: bold;
+  font-family: 'Quicksand';
+}
+#cast-edit-sidebar {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 52px 0 0 0;
+  z-index: 2;
+}
+
+#cast-edit-main {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  right:0;
+  top: 0;
+  padding: 52px 0 0 0;
+  z-index: 2;
+}
+#cast-edit-main iframe {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  position: relative;
+}
+
+.pricing .panel {
+  text-align: center;
+}
+.pricing h3.panel-title {
+  font-size: 32px;
+}
+.pricing h1 {
+  font-size: 36px;
+  margin-bottom:20px;
+}
+.pricing ul {
+  font-size:18px
+}
+
+</style>
 </head>
 <body>
 <div class="jumbotron">
