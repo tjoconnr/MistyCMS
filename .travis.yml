@@ -1,5 +1,5 @@
 language: python
-install: /install.sh
+install: true
 script: python -V
 # deploy:
 #   provider: gae
