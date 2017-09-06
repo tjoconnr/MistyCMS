@@ -1,0 +1,131 @@
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" data-toggle="tooltip" title="Home">
+        <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+      </a>
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-left">
+
+        {% if user %}
+     <!--    <li {% if app.route == "home" %}class="active"{% endif %}>
+          <a href="/a/home">Dashboard</a>
+        </li>
+ -->
+        <li class="dropdown {% if app.route == "menu" %}active{% endif %}">
+          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Menus <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            {% if menus %}
+              {% for m in menus %}
+                <li {% if menu and menu.id == m.id %}class="active"{% endif %}>
+                  <a href="/a/menu?menu_id={{ m.id }}">
+                    {{ m.name }}
+                  </a>
+                </li>
+              {% endfor %}
+              <!-- <li role="separator" class="divider"></li> -->
+            {% endif %}
+            <!-- <li><a href="{{ app.logout_url }}">Create View</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown {% if app.route == "theme" %}active{% endif %}">
+          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Themes <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              {% for a in assets if a.asset_type == "theme" %}
+                <li {% if menu and menu.id == a.id %}class="active"{% endif %}>
+                  <a href="/a/editor?asset_id={{ a.id }}">
+                    {{ a.name }}
+                  </a>
+                </li>
+              {% endfor %}
+          </ul>
+        </li>
+
+        <li class="dropdown {% if app.route == "template" %}active{% endif %}">
+          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Templates <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            {% if menus %}
+              {% for a in assets if a.asset_type == "template" %}
+                <li {% if asset and asset.id == a.id %}class="active"{% endif %}>
+                  <a href="/a/editor?asset_id={{ a.id }}">
+                    {{ a.name }}
+                  </a>
+                </li>
+              {% endfor %}
+              <!-- <li role="separator" class="divider"></li> -->
+            {% endif %}
+            <!-- <li><a href="{{ app.logout_url }}">Create View</a></li> -->
+          </ul>
+        </li>
+
+        {% endif %}
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right ">
+
+
+
+      {% if user %}
+        <li class="dropdown {% if app.route in ['user', 'account'] %}active{% endif %}">
+          <a  href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+          >
+            {{ user.name }} <span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu">
+            {% if app.is_admin %}
+               <li {% if app.route == "admin" %}class="active"{% endif %}>
+                <a href="/a/admin" title="Admin" data-toggle="tooltip">
+                  Admin Panel
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+            {% endif %}
+            <li {% if app.route == "user" %}class="active"{% endif %}>
+              <a href="/a/user">User Profile</a>
+            </li>
+            <li {% if app.route == "account" %}class="active"{% endif %}>
+              <a href="/a/account">Account Details</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{ app.logout_url }}">Sign out</a></li>
+          </ul>
+
+        </li>
+      {% else %}
+        <li><a href="{{ app.login_url }}">Sign in</a></li>
+      {% endif %}
+      </ul>
+
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

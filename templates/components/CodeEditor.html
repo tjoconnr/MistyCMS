@@ -1,0 +1,13 @@
+<div id="editor">{{ asset.content|trim if asset else "" }}</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+<script type="text/javascript">
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    {% if asset %}
+      {% if asset.asset_type == "theme" %}
+        editor.getSession().setMode("ace/mode/css");
+      {% elif asset.asset_type == "template" %}
+        editor.getSession().setMode("ace/mode/html");
+      {% endif %}
+    {% endif %}
+</script>
