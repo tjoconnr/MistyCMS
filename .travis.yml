@@ -22,7 +22,6 @@ before_install:
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then
      curl https://sdk.cloud.google.com | bash;
   fi
-- mkdir -p lib
 
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file client-secret.json
@@ -33,9 +32,6 @@ install:
 # Set the correct project to deploy to
 - gcloud config set project misty-cms
 - gcloud -q components update gae-python
-
-# Install the Python dependencies
-- pip install -r requirements.txt -t lib/
 
 script:
 - echo -e "\n\n __  __ _     _          _____ __  __  _____ \n|  \/  (_)   | |        / ____|  \/  |/ ____|\n| \  / |_ ___| |_ _   _| |    | \  / | (___  \n| |\/| | / __| __| | | | |    | |\/| |\___ \ \n| |  | | \__ \ |_| |_| | |____| |  | |____) |\n|_|  |_|_|___/\__|\__, |\_____|_|  |_|_____/ \n                   __/ |                     \n                  |___/                      \n\n"
