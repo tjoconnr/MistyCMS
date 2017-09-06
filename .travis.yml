@@ -1,6 +1,6 @@
 language: python
-install: true
-script: python -V
+install: echo "Installing MistyCMS..."
+script: echo "Building MistyCMS..."
 # deploy:
 #   provider: gae
 #   keyfile: client-secret.json
