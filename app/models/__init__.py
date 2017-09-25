@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-from asset import Asset, ASSET_TYPES
-from account import Account
-from menu import Menu, MenuItem
-from user import User
+from .account import Account
+from .asset import Asset
+from .post import Post
+from .user import User
+from .website import Website

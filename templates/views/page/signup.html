@@ -1,0 +1,41 @@
+{% extends "views/page/_page.html" %}
+{% block body %}
+<div class="container text-center">
+  <br /><br />
+  <h1>Build a free website.</h1>
+  <h5> <a href="/pricing" class="btn btn-link">Learn more about our pricing options.</a></h5>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="well">
+      <!--   <div class="form-group">
+            <label for="website-name">Email Address</label>
+            <input type="text" class="form-control input-lg" id="login-username" name="user" required />
+        </div>
+        <div class="form-group">
+            <label for="website-name">Password</label>
+            <input type="password" class="form-control input-lg" id="login-password" name="pass" required />
+        </div>
+        <div class="form-group">
+            <label for="website-name">Confirm Password</label>
+            <input type="password" class="form-control input-lg" id="login-password" name="pass2" required />
+        </div>
+        <br />
+        <button type="button" class="btn btn-primary btn-lg btn-block">Create your misty account</button>
+        <br />
+        <hr /> -->
+        <h3>Sign up with Google</h3>
+        <br />
+        {% include "components/LoginGoogle.html" %}
+        <br />
+        <br />
+      </div>
+      <!-- <h5 class="text-center"><a href="/reset">Forgot your password?</a></h5> -->
+    </div>
+    <div class="col-md-3">
+    &nbsp;
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

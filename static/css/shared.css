@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Quicksand:400,700');
+
+h1, h2, h3, h4, h5, h6, .btn, label, ul, .jumbotron.full h1, .navbar-brand {
+  font-family: 'Quicksand', sans-serif;
+}
+.jumbotron.full h1, h2, .navbar-brand {
+  font-family: 'Pacifico', cursive;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-top: 50px;
+}

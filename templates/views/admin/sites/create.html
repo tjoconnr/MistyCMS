@@ -1,0 +1,33 @@
+{% extends "views/admin/_admin.html" %}
+{% block body %}
+<div id="setup" class="jumbotron">
+  <div class="container-fluid text-center">
+    <h1>Create a website.</h1>
+    <br /><br />
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form action="/api/website" method="POST">
+          <input type="hidden" name="create" value="1" />
+          <div class="form-group">
+              <label for="website-name">What do you want to call your site?</label>
+              <input type="text" class="form-control input-lg" id="website-name" name="website-name" placeholder="e.g. My Awesome Website" required />
+          </div>
+          <br /><br />
+          <div class="form-group">
+              <label for="website-url">Do you have a domain?</label>
+              <input type="text" class="form-control input-lg" id="website-subdomain" name="website-subdomain" placeholder="e.g. myawesomesite.com" required />
+          </div>
+          <br /><br />
+          <button type="submit" class="btn btn-primary btn-lg">Save and Continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#website-name').keyup(function(){
+    slug = $('#website-name').val().replace(/ /g, '-').toLowerCase();
+    $('#website-url').val(slug);
+  });
+</script>
+{% endblock %}

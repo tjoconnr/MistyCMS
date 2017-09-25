@@ -1,0 +1,20 @@
+{% extends "views/admin/sites/_sites.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="page-header">
+    <h1>Settings</h1>
+  </div>
+
+  <div class="form-group">
+    <label for="account-url">Name</label>
+    <input type="url" class="form-control input-lg" id="account-url" name="website" value="{{ website.name }}" required />
+  </div>
+  <div class="form-group">
+      <label for="account-url">Subdomain</label>
+      <input type="url" class="form-control input-lg" id="account-url" name="subdomain" value="{{ website.subdomain }}" required />
+  </div>
+
+</div>
+{% endblock %}
+

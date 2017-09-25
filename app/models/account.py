@@ -4,24 +4,27 @@ from google.appengine.api import memcache
 
 from ._model import BaseModel
 
-from app.constants import CACHE_SECONDS, ADMIN_SLUG
+from ..constants import CACHE_SECONDS, ADMIN_SLUG, ACCOUNT_TYPES
+
+def get_cache_key(account_id):
+        return "account:%s" % account_id
+
+class AccountUser(BaseModel):
+    account = db.KeyProperty(kind="Account", required=True)
+    user = db.KeyProperty(kind="User", required=True)
 
 class Account(BaseModel):
     name = db.StringProperty(required=True)
-    website = db.StringProperty(default="")
-    is_active = db.BooleanProperty(default=False)
+    is_active = db.BooleanProperty(default=True)
+    account_type = db.StringProperty(default=ACCOUNT_TYPES[0], choices=ACCOUNT_TYPES)
 
     @staticmethod
     def get_system_account():
         return Account.get_account(ADMIN_SLUG)
 
     @staticmethod
-    def get_cache_key(account_id):
-        return "account:%s" % account_id
-
-    @staticmethod
     def get_account(account_id, force_refresh=False):
-        CACHE_KEY = Account.get_cache_key(account_id)
+        CACHE_KEY = get_cache_key(account_id)
         cached_account = memcache.get(CACHE_KEY)
         if cached_account != None and force_refresh == False:
             return cached_account
@@ -32,13 +35,10 @@ class Account(BaseModel):
         return None
 
     @staticmethod
-    def update(account_id, name, website):
-        CACHE_KEY = Account.get_cache_key(account_id)
-
+    def update(account_id, name, account_type):
+        CACHE_KEY = get_cache_key(account_id)
         account = Account.get_by_id(account_id)
         account.name = name
-        account.website = website
-        account.is_active = True
+        account.account_type = account_type
         account.save()
-
-        memcache.delete(CACHE_KEY)
+        memcache.set(CACHE_KEY, account, CACHE_SECONDS)

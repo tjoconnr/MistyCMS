@@ -1,0 +1,44 @@
+<ul class="nav nav-pills nav-stacked">
+  <li {% if app.route == "dashboard" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/dashboard?id={{ website.id }}">
+      <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+      <span class="icon-text">Dashboard</span>
+    </a>
+  </li>
+  <li {% if app.route == "pages" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/pages?id={{ website.id }}">
+      <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+      <span class="icon-text">Pages</span>
+    </a>
+  </li>
+   <li {% if app.route == "posts" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/posts?id={{ website.id }}">
+      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+      <span class="icon-text">Posts</span>
+    </a>
+  </li>
+  <li {% if app.route == "events" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/events?id={{ website.id }}">
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      <span class="icon-text">Events</span>
+    </a>
+  </li>
+  <li {% if app.route == "media" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/media?id={{ website.id }}">
+      <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+      <span class="icon-text">Media</span>
+    </a>
+  </li>
+  <li {% if app.route == "themes" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/themes?id={{ website.id }}">
+      <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+      <span class="icon-text">Themes</span>
+    </a>
+  </li>
+  <li {% if app.route == "settings" %}class="active"{% endif %}>
+    <a href="{{ env.admin }}/sites/settings?id={{ website.id }}">
+      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      <span class="icon-text">Settings</span>
+    </a>
+  </li>
+</ul>

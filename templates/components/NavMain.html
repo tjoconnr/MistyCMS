@@ -1,131 +1,130 @@
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
-
-    <!-- Brand and toggle get grouped for better mobile display -->
+    <ul class="nav navbar-nav navbar-left">
+      <li class="dropdown">
+        <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li {% if app.endpoint == "home" %}class="active"{% endif %}>
+            <a href="{{ env.admin }}/" >
+              <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+              <span class="icon-text">Home</span>
+            </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li {% if app.endpoint == "sites" %}class="active"{% endif %}>
+            <a href="{{ env.admin }}/sites/" >
+              <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+              <span class="icon-text">Websites</span>
+            </a>
+          </li>
+          <li {% if app.endpoint == "contacts" %}class="active"{% endif %}>
+            <a href="{{ env.admin }}/contacts/" >
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+              <span class="icon-text">Contacts</span>
+            </a>
+          </li>
+          <li {% if app.endpoint == "analytics" %}class="active"{% endif %}>
+            <a href="{{ env.admin }}/analytics/">
+              <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+              <span class="icon-text">Analytics</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <div class="navbar-header">
-
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/" data-toggle="tooltip" title="Home">
-        <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
-      </a>
+      <a class="navbar-brand" href="{{ env.admin }}/">{{ env.name }}</a>
     </div>
-
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <ul class="nav navbar-nav navbar-left">
-
-        {% if user %}
-     <!--    <li {% if app.route == "home" %}class="active"{% endif %}>
-          <a href="/a/home">Dashboard</a>
-        </li>
- -->
-        <li class="dropdown {% if app.route == "menu" %}active{% endif %}">
-          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Menus <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            {% if menus %}
-              {% for m in menus %}
-                <li {% if menu and menu.id == m.id %}class="active"{% endif %}>
-                  <a href="/a/menu?menu_id={{ m.id }}">
-                    {{ m.name }}
-                  </a>
-                </li>
-              {% endfor %}
-              <!-- <li role="separator" class="divider"></li> -->
-            {% endif %}
-            <!-- <li><a href="{{ app.logout_url }}">Create View</a></li> -->
-          </ul>
-        </li>
-
-        <li class="dropdown {% if app.route == "theme" %}active{% endif %}">
-          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Themes <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-              {% for a in assets if a.asset_type == "theme" %}
-                <li {% if menu and menu.id == a.id %}class="active"{% endif %}>
-                  <a href="/a/editor?asset_id={{ a.id }}">
-                    {{ a.name }}
-                  </a>
-                </li>
-              {% endfor %}
-          </ul>
-        </li>
-
-        <li class="dropdown {% if app.route == "template" %}active{% endif %}">
-          <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Templates <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            {% if menus %}
-              {% for a in assets if a.asset_type == "template" %}
-                <li {% if asset and asset.id == a.id %}class="active"{% endif %}>
-                  <a href="/a/editor?asset_id={{ a.id }}">
-                    {{ a.name }}
-                  </a>
-                </li>
-              {% endfor %}
-              <!-- <li role="separator" class="divider"></li> -->
-            {% endif %}
-            <!-- <li><a href="{{ app.logout_url }}">Create View</a></li> -->
-          </ul>
-        </li>
-
-        {% endif %}
-
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right ">
-
-
-
-      {% if user %}
-        <li class="dropdown {% if app.route in ['user', 'account'] %}active{% endif %}">
-          <a  href="#"
-              class="dropdown-toggle"
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-          >
-            {{ user.name }} <span class="caret"></span>
-          </a>
-
-          <ul class="dropdown-menu">
-            {% if app.is_admin %}
-               <li {% if app.route == "admin" %}class="active"{% endif %}>
-                <a href="/a/admin" title="Admin" data-toggle="tooltip">
-                  Admin Panel
-                </a>
-              </li>
-              <li role="separator" class="divider"></li>
-            {% endif %}
-            <li {% if app.route == "user" %}class="active"{% endif %}>
-              <a href="/a/user">User Profile</a>
-            </li>
-            <li {% if app.route == "account" %}class="active"{% endif %}>
-              <a href="/a/account">Account Details</a>
+    {% if websites %}
+    <ul class="nav navbar-nav navbar-left ">
+      <li class="dropdown">
+        <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {% if website %}
+            {{ website.name }}
+          {% else %}
+            Select a website
+          {% endif %}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          {% if website %}
+            <li {% if app.endpoint == "account" %}class="active"{% endif %}>
+              <a href="{{ env.admin }}/!/{{ website.id }}/">Visit Website <span class="glyphicon glyphicon-share-alt pull-right" aria-hidden="true"></span></a>
             </li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ app.logout_url }}">Sign out</a></li>
-          </ul>
-
-        </li>
-      {% else %}
-        <li><a href="{{ app.login_url }}">Sign in</a></li>
+            <li class="dropdown-header">Websites</li>
+          {% endif %}
+          {% for w in websites %}
+            <li>
+              <a href="{{ env.admin }}/sites/dashboard?id={{ w.id }}">{{ w.name }}</a>
+            </li>
+          {% endfor %}
+          <li role="separator" class="divider"></li>
+          <li>
+            <a href="{{ env.admin }}/sites/create">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              Create Website
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% if website %}
+      <li class="dropdown">
+        <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="{{ env.admin }}/sites/posts?id={{ website.id }}">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post
+            </a>
+          </li>
+          <li>
+            <a href="{{ env.admin }}/sites/pages?id={{ website.id }}">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Page
+            </a>
+          </li>
+        </ul>
+      </li>
       {% endif %}
-      </ul>
-
-
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </ul>
+    {% endif %}
+    <ul class="nav navbar-nav navbar-right ">
+      <li class="dropdown user-profile {% if app.endpoint in ['user', 'account'] %}active{% endif %}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <img src="{{ user.id|gravatar }}" class="img-circle img-responsive" />
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+              <img class="img-circle img-responsive pull-left" src="{{ user.id|gravatar}}" />
+              <div class="pull-left">
+                <h4><strong>{{ user.name }}</strong></h4>
+                <h5>{{ account.name }}</h5>
+                <a href="{{ env.admin }}/account/" class="btn btn-primary btn-sm">Manage Account</a>
+              </div>
+              <div style="clear:both"></div>
+          </li>
+          {% if app.is_admin %}
+          <li role="separator" class="divider"></li>
+          <li {% if app.endpoint == "system" %}class="active"{% endif %}>
+            <a href="{{ env.admin }}/system/">
+              System Admin
+            </a>
+          </li>
+          {% endif %}
+          <li role="separator" class="divider"></li>
+          <li><a href="/">Visit MistyCMS.com</a></li>
+          <li role="separator" class="divider"></li>
+          <li>
+            <a href="{{ app.logout_url }}">
+              Sign out
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </nav>

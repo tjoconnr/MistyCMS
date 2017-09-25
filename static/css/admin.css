@@ -1,0 +1,216 @@
+/*
+-------------------------------------------------------------------------------
+
+  General Styles
+
+-------------------------------------------------------------------------------
+*/
+.page-header {
+  margin: 30px 0 20px;
+}
+.dropdown-menu {
+  min-width: 230px;
+}
+/*
+-------------------------------------------------------------------------------
+
+  Fixed Sidebar
+
+-------------------------------------------------------------------------------
+*/
+#sidebar {
+  position: fixed;
+  background: #3d3d3d;
+  height: 100%;
+  width: 160px;
+}
+#sidebar .nav li a {
+  color: #eee;
+  border-radius: 0;
+}
+#sidebar .nav>li>a:focus,
+#sidebar .nav>li>a:hover {
+  background: #666;
+}
+#sidebar.slim {
+  width: 50px;
+}
+#sidebar.slim .icon-text {
+  display: none;
+}
+#content {
+  margin-left: 160px;
+}
+#content .container-fluid {
+  padding: 0 40px;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Sidebar Nav
+
+-------------------------------------------------------------------------------
+*/
+.nav-stacked .glyphicon {
+  top: 2px;
+  margin-right: 5px;
+}
+.nav-stacked>li>a {
+  padding: 10px 15px;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Dropdown Nav
+
+-------------------------------------------------------------------------------
+*/
+.dropdown-menu>li>a {
+  padding: 12px 15px;
+  font-size: 15px;
+}
+.dropdown-menu .glyphicon {
+  top: 3px;
+  margin-right: 5px;
+}
+
+
+/*
+-------------------------------------------------------------------------------
+
+  Fixed Sidebar
+
+-------------------------------------------------------------------------------
+*/
+.navbar .container-fluid {
+  padding-left: 0;
+}
+.navbar-inverse {
+  background-color: #333;
+}
+
+.navbar li.user-profile>a {
+  padding-top:8px;
+  padding-bottom: 8px;
+}
+.navbar li.user-profile>a>img {
+  max-width: 32px;
+  display: inline-block;
+}
+.navbar li.user-profile>ul>li{
+  width: 300px;
+}
+.navbar li.user-profile>ul>li>img {
+  max-width: 96px;
+  margin: 10px 20px;
+  display: inline-block;
+}
+/*
+-------------------------------------------------------------------------------
+
+  Highcharts
+
+-------------------------------------------------------------------------------
+*/
+.highchart {
+  width: 100%;
+  height: 400px;
+  background: #f8f8f8;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Jumbotron
+
+-------------------------------------------------------------------------------
+*/
+.page-jumbotron {
+  background: #185282;
+  background: -moz-linear-gradient(top,  #185282 0%, #123360 100%);
+  background: -webkit-linear-gradient(top,  #185282 0%,#123360 100%);
+  background: linear-gradient(to bottom,  #185282 0%,#123360 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185282', endColorstr='#123360',GradientType=0 );
+  color: white;
+  margin: 0;
+}
+.jumbotron-full {
+  background: url(/static/img/bg.jpg) no-repeat;
+  background-size:cover;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Buttons
+
+-------------------------------------------------------------------------------
+*/
+.google-icon {
+  max-width: 20px;
+  display: inline-block;
+  margin-right:5px;
+  vertical-align: sub;
+}
+.btn {
+  border-radius: 0;
+}
+.btn {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition:    all 0.2s ease-in-out;
+  -ms-transition:     all 0.2s ease-in-out;
+  -o-transition:      all 0.2s ease-in-out;
+  transition:         all 0.2s ease-in-out;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Site Wizard
+
+-------------------------------------------------------------------------------
+*/
+// #setup label {
+//   font-size: 24px;
+//   font-weight: normal;
+//   margin-bottom: 0.7 em;
+// }
+// #setup input {
+//   text-align: center;
+// }
+
+/*
+-------------------------------------------------------------------------------
+
+  Code Editor
+
+-------------------------------------------------------------------------------
+*/
+#editor {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/*
+-------------------------------------------------------------------------------
+
+  Footer
+
+-------------------------------------------------------------------------------
+*/
+.footer .text-muted {
+  margin: 20px 0;
+  color: #999;
+  font-size: 10px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
