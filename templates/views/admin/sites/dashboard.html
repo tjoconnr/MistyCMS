@@ -1,0 +1,42 @@
+{% extends "views/admin/sites/_sites.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <br /><br />
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Performance</h3>
+    </div>
+    <div class="panel-body">
+      <div class="highchart" id="chart-{{ website.id }}"></div>
+    </div>
+  </div>
+</div>
+<script>
+$(function () {
+    var myChart = Highcharts.chart('chart-{{ website.id }}', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3]
+        }]
+    });
+});
+</script>
+{% endblock %}

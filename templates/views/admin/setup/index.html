@@ -1,0 +1,66 @@
+{% extends "views/admin/_admin.html" %}
+
+{% block body %}
+<div class="container">
+  <form action="/api/account" method="POST">
+    <input type="hidden" name="redirect" value="/a/sites/create" />
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <br /><br />
+        <h1>Setup your account.</h1>
+        <br /><br />
+        <div class="form-group">
+            <label for="user-email">Email Address</label>
+            <input type="text" class="form-control input-lg" name="user-email" value="{{ user.id }}" required readonly />
+        </div>
+        <div class="form-group">
+            <label for="user-name">Your Name</label>
+            <input type="text" class="form-control input-lg" name="user-name" value="{{ user.name }}" required />
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="account-name">Account Name</label>
+            <input type="text" class="form-control input-lg" name="account-name" value="{{ account.name }}" required />
+        </div>
+        <div class="form-group">
+          <label>Account Type</label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="account-type" {% if account.account_type == "free" %}checked{% endif %} value="free">
+              Free ($0)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="account-type" {% if account.account_type == "personal" %}checked{% endif %} value="personal">
+              Personal ($20/month)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="account-type" {% if account.account_type == "startup" %}checked{% endif %} value="startup">
+              Startup ($100/month)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="account-type" {% if account.account_type == "ultimate" %}checked{% endif %} value="ultimate">
+              Ultimate ($500/month)
+            </label>
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Save and Continue</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $('#website-name').keyup(function(){
+    slug = $('#website-name').val().replace(/ /g, '-').toLowerCase();
+    $('#website-url').val(slug);
+  });
+</script>
+
+{% endblock %}

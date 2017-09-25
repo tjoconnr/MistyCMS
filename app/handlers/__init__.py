@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-from .api_handler import ApiHandler
-from .app_handler import AppHandler
-from .page_handler import PageHandler
-from .cast_handler import CastHandler
-from .test_handler import TestHandler
+from .admin import AdminHandler
+from .auth import AuthHandler
+from .api import ApiHandler
+from .page import PageHandler
+from .test import TestHandler
+from .website import WebsiteHandler

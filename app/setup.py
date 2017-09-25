@@ -1,49 +1,8 @@
 #!/usr/bin/env python
 import logging
 
-from app.models import Account, Menu, MenuItem, Asset, User
-from app.constants import ADMIN_SLUG
-
-def create_user(email):
-    create_default_assets()
-
-    account_domain = email.split('@')[1]
-    account_name = account_domain.split('.')[0].title()
-    account_url = "http://" + account_domain
-    account = Account(name=account_name, website=account_url)
-    account_key = account.save()
-
-    username = email.split('@')[0].title()
-    user = User(id=email, name=username, account=account_key)
-    user.save()
-
-    # default_theme = Asset.get_by_id("default").key
-    # default_template = Asset.get_by_id("template-default").key
-
-    # menu = Menu(account=account_key, name="Taproom Draft List", theme=default_theme, template=default_template)
-    # menu_key = menu.save()
-
-    # menu_item = MenuItem(name="Pale Ale", description="5%", category="Pale", price=5.0, menu=menu_key)
-    # menu_item.save()
-
-    # menu_item = MenuItem(name="Farmhouse", description="5%", category="Farmhouse", price=4.50, menu=menu_key)
-    # menu_item.save()
-
-    # menu_item = MenuItem(name="Oatmeal Stout", description="5%", category="Stout", price=6.0, menu=menu_key)
-    # menu_item.save()
-
-    # menu_item = MenuItem(name="Belgian White", description="5%", category="White", price=6.0, menu=menu_key)
-    # menu_item.save()
-
-    # menu_item = MenuItem(name="Barrel Aged Sour", description="5%", category="Sour", price=8.0, menu=menu_key)
-    # menu_item.save()
-
-    # menu_item = MenuItem(name="Juice Bomb", description="5%", category="IPA", price=7.0, menu=menu_key)
-    # menu_item.save()
-
-
-    return user
-
+from .models import Account, Asset, Post, User, Website
+from .constants import ADMIN_SLUG
 
 DEFAULT_THEME = """
 @import url('https://fonts.googleapis.com/css?family=Neucha');
@@ -87,7 +46,7 @@ body, .menu-item h1 {
 }"""
 
 DEFAULT_TEMPLATE = """
-{% extends "views/_cast.html" %}
+{% extends "views/__master.html" %}
 {% block body %}
 <div class="container-fluid">
   <div class="menu-items">
@@ -107,7 +66,7 @@ DEFAULT_TEMPLATE = """
 """
 
 TEMPLATE_FULL = """
-{% extends "views/_cast.html" %}
+{% extends "views/__master.html" %}
 {% block body %}
 <div class="container-fluid">
    <div class="page-header">
@@ -153,7 +112,6 @@ def create_default_assets():
 
     theme = Asset(account=account_key, id="whimsy", name="Whimsy", asset_type="theme", content=THEME_WHIMSY)
     theme.save()
-
 
     template = Asset(account=account_key, id="template-default", name="Default", asset_type="template", content=DEFAULT_TEMPLATE)
     template.save()

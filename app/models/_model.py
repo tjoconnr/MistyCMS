@@ -3,8 +3,10 @@ from datetime import date,datetime
 import json
 import time
 import logging
+
 from google.appengine.ext import ndb as db
-from app import utils
+
+from ..utils import date_pretty
 
 class BaseModel(db.Model):
     created_on = db.DateTimeProperty(required=True,auto_now_add=True)
